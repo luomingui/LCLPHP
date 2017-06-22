@@ -1,0 +1,11 @@
+RewriteEngine On
+/*配置后templets目录下不能执行php文件，防止挂马*/
+RewriteRule templets/(.*).(php)$ – [F]
+ErrorDocument 404.html
+/*突破上传的内存限制*/
+php_value memory_limit 100M
+php_value post_max_size 30M
+php_value upload_max_filesize 30M
+php_value max_execution_time 300
+php_value max_input_tim 300
+php_value display_errors On

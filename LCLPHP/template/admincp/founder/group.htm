@@ -1,0 +1,56 @@
+<!--{template admincp/common/header}-->
+<div class="container" id="cpcontainer">
+    <script type="text/JavaScript">
+        parent.document.title = '管理中心 - 站长 - 后台管理团队';
+        if (parent.document.getElementById('admincpnav'))
+        parent.document.getElementById('admincpnav').innerHTML = '站长&nbsp;&raquo;&nbsp;后台管理团队&nbsp;&nbsp;<a target="main" title="添加到常用操作" href="admin.php?action=misc&operation=custommenu&do=add&title=后台管理团队&url=admin.php?action=founder&operation=perm&do=member">[+]</a>';
+    </script>
+    <div class="floattop">
+        <div class="itemtitle">
+            <h3>后台管理团队</h3>
+            <ul class="tab1">
+                <li><a href="admin.php?action=founder&operation=perm&do=member"><span>团队成员</span></a></li>
+                <li class="current"><a href="admin.php?action=founder&operation=perm&do=group"><span>团队职务</span></a></liclass>
+            </ul>
+        </div>
+    </div>
+    <div class="floattopempty"></div>
+    <form name="cpform" method="post" autocomplete="off" action="admin.php?action=founder&operation=perm&do=group" id="cpform">
+        <input type="hidden" id="formhash" name="formhash" value="{FORMHASH}" />
+        <input type="hidden" id="formscrolltop" name="scrolltop" value="" />
+        <input type="hidden" name="anchor" value="" />
+        <table class="tb tb2 ">
+            <tr class="header">
+                <th></th>
+                <th>职务名称</th>
+                <th></th>
+            </tr>
+            <!--{loop $groups $rw}-->
+            <tr style="height:20px" class="hover">
+                <td class="td25"><input class="checkbox" type="checkbox" name="delete[]" value="$rw[cpgroupid]"></td>
+                <td class="td24"><input type="text" class="txtnobd" onblur="this.className = 'txtnobd'" onfocus="this.className = 'txt'" size="15" name="name[{$rw[cpgroupid]}]" value="$rw[cpgroupname]"></td>
+                <td><a href="admin.php?action=founder&operation=perm&do=group&id=$rw[cpgroupid]">编辑</a></td>
+            </tr>
+            <!--{/loop}-->
+
+            <tr style="height:20px" class="hover">
+                <td>新增</td>
+                <td><input class="txt" type="text" name="newcpgroupname" value="" /></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="td25">
+                    <input type="checkbox" name="chkall" id="chkallogXP" class="checkbox" onclick="checkAll('prefix', this.form, 'delete')" />
+                    <label for="chkallogXP">删?</label>
+                </td>
+                <td colspan="15">
+                    <div class="fixsel">
+                        <input type="submit" class="btn" id="submit_submit" name="submit" title="按 Enter 键可随时提交您的修改" value="提交" />
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <script type="text/JavaScript">_attachEvent(document.documentElement, 'keydown', function (e) { entersubmit(e, 'submit'); });</script>
+    </form>
+</div>
+<!--{template admincp/common/footer}-->

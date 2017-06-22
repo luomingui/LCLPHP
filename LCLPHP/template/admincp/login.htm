@@ -1,0 +1,44 @@
+<!--{template admincp/common/header}-->
+<script language="JavaScript">
+    if (self.parent.frames.length != 0) {
+        self.parent.location = document.location;
+    }
+</script>
+<table class="logintb">
+    <tr>
+        <td class="loginbox">
+            <h1>Administrator's Control Panel</h1>
+            <p>&nbsp;&nbsp;中兴捧月神算师算法精英挑战赛是由中兴通讯面向全球大学生举办的校园赛事。大赛致力于培养学生创新能力、团队合作能力、建模编程实践能力，挖掘全球校园优秀算法和程序设计精英.</p>
+        </td>
+        <td class="login">
+            <form method="post" autocomplete="off" name="login" id="loginform" action="admin.php?action=login">
+                <input type="hidden" id="formhash" name="formhash" value="{FORMHASH}" />
+                <input type="hidden" id="formscrolltop" name="scrolltop" value="" />
+                <input type="hidden" name="frames" value="yes">
+                <input type="hidden" name="seccodehidden" value="$seccodeinit" />
+                <p class="logintitle">用户名: </p>
+                <p class="loginform"><input name="admin_username" tabindex="1" type="text" class="txt" autocomplete="off" /></p>
+                <p class="logintitle">密　码:</p>
+                <p class="loginform"><input name="admin_password" tabindex="1" type="password" class="txt" autocomplete="off" /></p>
+                <p class="logintitle">验证码:</p>
+                <p class="loginform"><input name="seccode" tabindex="1" type="text" class="txt seccode" />
+                    <img src="seccode.php?width=70&height=21&seccodeauth=$seccodeinit&{eval echo rand();}" class="checkcode" />
+                </p>
+
+                <p class="loginnofloat"><input name="loginsubmit" value="提交"  tabindex="3" type="submit" class="btn" /></p>
+            </form>
+            <script type="text/JavaScript">document.getElementById('loginform').admin_username.focus();</script>
+        </td>
+    </tr>
+</table>
+<table class="logintb">
+    <tr>
+        <td colspan="2" class="footer">
+            <div class="copyright">
+                <p>Powered by LCL X1.0 </p>
+                <p>&copy; 2017-2018, <a href="http://www.zte.com.cn/" target="_blank">ZTE</a> Inc.</p>
+            </div>
+        </td>
+    </tr>
+</table>
+<!--{template admincp/common/footer}-->

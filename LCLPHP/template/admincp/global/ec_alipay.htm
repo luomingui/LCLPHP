@@ -1,0 +1,122 @@
+<!--{template admincp/common/header}-->
+<div class="container" id="cpcontainer">
+    <script type="text/JavaScript">
+        parent.document.title = '管理中心 - 运营 - 支付方式';
+        if (parent.document.getElementById('admincpnav'))
+        parent.document.getElementById('admincpnav').innerHTML = '运营&nbsp;&raquo;&nbsp;支付方式&nbsp;&nbsp;';
+    </script>
+    <div class="floattop">
+        <div class="itemtitle">
+            <h3>支付方式</h3>
+            <ul class="tab1">
+                <li class="current"><a href="admin.php?action=ec&operation=alipay"><span>支付宝</span></a></li>
+                <li><a href="admin.php?action=ec&operation=tenpay"><span>财付通</span></a></li>
+                <li><a href="admin.php?action=ec&operation=credit"><span>诚信规则</span></a></li>
+            </ul>
+        </div>
+    </div>
+    <table class="tb tb2 " id="tips">
+        <tr><th class="partition">技巧提示</th></tr>
+        <tr><td class="tipsblock" s="1">
+                <ul id="tipslis">
+                    <li>“支付宝”(<a href="http://www.alipay.com" target="_blank">http://www.alipay.com</a>)是中国领先的网上支付平台，
+                        由全球最佳 B2B 公司阿里巴巴公司创建，为 Discuz! 用户提供积分购买及论坛 B2C、C2C 交易平台。您只需进行简单的设置，
+                        即可使论坛内容和人气，真成为除广告收入外的重要利润来源，从而实现论坛的规模化经营。</li>
+                    <li><b>由于涉及现金交易，为避免因操作不当而造成的资金损失，请在开始使用支付宝积分交易功能(不包含支付宝按钮功能)前，务必仔细阅读《用户使用说明书》
+                            中有关电子商务的部分，当确认完全理解和接受相关流程及使用方法后再进行相关设置。</b></li>
+                    <li id="tips_more" style="border: none; background: none; margin-bottom: 6px;">
+                        <a href="###" onclick="var tiplis = document.getElementById('tipslis').getElementsByTagName('li');
+                                for (var i = 0; i < tiplis.length; i++) {
+                                    tiplis[i].style.display = '';
+                                }
+                                document.getElementById('tips_more').style.display = 'none';">显示全部提示...</a></li>
+                    <li style="display: none">您可以设置允许用户通过现金在线支付的方式，为其交易积分账户充值，
+                        用于购买帖子内容、购买用户组权限、积分转账或用户组升级等功能。支付宝积分交易功能，
+                        需在“<a href="admin.php?action=setting&operation=credits" target="_blank">积分设置</a>”中启用交易积分，
+                        并同时设置相应的积分策略以满足不同场合的需要。请务必正确设置您的收款支付宝账号，否则将造成用户付款后积分无法实时到账，
+                        造成大量需要人工处理的订单信息。</li>
+                    <li style="display: none">除官方网站或官方论坛另行通知以外，提供的支付宝支付服务每笔交易收取 1.5% 的手续费。请及时关注相关业务的最新通知，各项政策或流程的变更、
+                        调整，以官方网站或官方论坛提供的信息为准。</li>
+                    <li style="display: none">您使用支付宝服务是建立在完全自愿的基础上，除因主观恶意的因素造成的资金损失以外，公司不对因使用此功能造成的任何损失承担责任。</li>
+                    <li style="display: none">支付宝业务咨询 Email 为 <a href="mailto:6688@taobao.com">6688@taobao.com</a>；
+                        支付宝客户服务电话为 +86-0571-88156688。</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+
+    <form name="cpform" method="post" autocomplete="off" action="admin.php?action=ec&operation=alipay" id="cpform" >
+
+        <input type="hidden" id="formhash" name="formhash" value="{FORMHASH}" />
+        <input type="hidden" id="formscrolltop" name="scrolltop" value="" />
+        <input type="hidden" name="anchor" value="" />
+
+        <table class="tb tb2 nobdb">
+            <tr><th colspan="15" class="partition">支付宝设置</th></tr>
+            <tr><td colspan="2" class="td27" s="1">收款支付宝账号:</td></tr>
+            <tr class="noborder">
+                <td class="vtop rowform">
+                    <input name="settingsnew[ec_alipay_account]" value="$settings['ec_alipay_account']" type="text" class="txt"   />
+                </td>
+                <td class="vtop tips2" s="1">如果开启兑换或交易功能，请填写真实有效的支付宝账号，用于收取用户以现金兑换交易积分的相关款项。如账号无效或安全码有误，将导致用户支付后无法正确对其积分账户自动充值，或进行正常的交易对其积分账户自动充值，或进行正常的交易。<br />如您没有支付宝帐号，<a href="https://memberprod.alipay.com/account/reg/index.htm" target="_blank">请点击这里注册</a></td>
+            </tr>
+            <tr><td colspan="2" class="td27" s="1">支付测试:</td></tr>
+            <tr class="noborder">
+                <td class="vtop rowform">
+                    <a href="admin.php?action=ec&operation=alipay&checktype=credit" target="_blank">积分充值订单测试</a><br />
+                </td>
+                <td class="vtop tips2" s="1">本测试将模拟提交 0.01 元人民币的订单进行测试，如果提交后成功出现付款界面，说明您站点的支付宝功能可以正常使用</td>
+            </tr>
+            <tr><th colspan="15" class="partition">支付宝签约用户设置</th></tr>
+            <tr><td colspan="2" class="td27" s="1">使用纯即时到帐接口:</td></tr>
+            <tr class="noborder"><td class="vtop rowform">
+                    <ul onmouseover="altStyle(this);">
+                        <li<!--{if $ec_alipay_creditdirectpay==1}--> class="checked" <!--{/if}-->><input class="radio" type="radio" name="settingsnew[ec_alipay_creditdirectpay]" value="1" <!--{if $ec_alipay_creditdirectpay==1}--> checked <!--{/if}--> onclick="changeAliApi(this.value)">&nbsp;是</li>
+                        <li<!--{if $ec_alipay_creditdirectpay==0}--> class="checked" <!--{/if}-->><input class="radio" type="radio" name="settingsnew[ec_alipay_creditdirectpay]" value="0" <!--{if $ec_alipay_creditdirectpay==0}--> checked <!--{/if}--> onclick="changeAliApi(this.value)">&nbsp;否</li>
+                    </ul>
+                </td>
+                <td class="vtop tips2" s="1">如果您的签约协议中包含纯即时到帐接口（不是标准双接口）可以选择此项，让积分充值只能使用即时到账方式付款</td>
+            </tr>
+            <tr><td colspan="2" class="td27" s="1">合作者身份 (PID):</td></tr>
+            <tr class="noborder">
+                <td class="vtop rowform">
+                    <input name="settingsnew[ec_alipay_partner]" value="$ec_alipay_partner" type="text" class="txt"   />
+                </td>
+                <td class="vtop tips2" s="1">支付宝签约用户请在此处填写支付宝分配给您的合作者身份，签约用户的手续费按照您与支付宝官方的签约协议为准。<br/>
+                    如果您还未签约，<a href="http://act.life.alipay.com/systembiz/discuz/" target="_blank">请点击这里签约</a>；
+                    如果已签约,<a href="https://b.alipay.com/order/pidKey.htm?pid=2088501719138773&product=fastpay" id="aliapitype" target="_blank">请点击这里获取PID、Key</a>;如果在签约时出现合同模板冲突，请咨询0571-88158090</td>
+            </tr>
+            <tr><td colspan="2" class="td27" s="1">交易安全校验码 (key):</td></tr>
+            <tr class="noborder">
+                <td class="vtop rowform">
+                    <input name="settingsnew[ec_alipay_securitycode]" value="$ec_alipay_securitycodemask" type="text" class="txt"   />
+                </td>
+                <td class="vtop tips2" s="1">支付宝签约用户可以在此处填写支付宝分配给您的交易安全校验码，此校验码您可以到支付宝官方的商家服务功能处查看</td>
+            </tr>
+        </table>
+
+        <table class="tb tb2 nobdt">
+            <tr>
+                <td colspan="15">
+                    <div class="fixsel">
+                        <input type="submit" class="btn" id="submit_alipaysubmit" name="alipaysubmit" title="按 Enter 键可随时提交您的修改" value="提交" />
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <script type="text/JavaScript">_attachEvent(document.documentElement, 'keydown', function (e) { entersubmit(e, 'alipaysubmit'); });</script>
+    </form>
+    <script type="text/JavaScript">
+        function changeAliApi(type) {
+        var apiUrl = 'https://b.alipay.com/order/pidKey.htm?pid=2088501719138773&product=';
+        if(type == 1) {
+        apiUrl += 'fastpay';
+        } else {
+        apiUrl += 'dualpay';
+        }
+        $('aliapitype').href = apiUrl;
+        }
+        changeAliApi();
+    </script>
+</div>
+<!--{template admincp/common/footer}-->

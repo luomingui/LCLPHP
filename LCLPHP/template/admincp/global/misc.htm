@@ -1,0 +1,61 @@
+<!--{template admincp/common/header}-->
+<div class="container" id="cpcontainer">
+    <script type="text/JavaScript">
+        var rowtypedata = [
+        [
+        [1, '', 'td25'],
+        [1, '<input type="text" class="txt" name="newdisplayorder[]" size="3">', 'td28'],
+        [1, '<input type="text" class="txt" name="newtitle[]" size="25">'],
+        [1, '<input type="text" class="txt" name="newurl[]" size="40">', 'td26']
+        ]
+        ];
+    </script>
+    <script type="text/JavaScript">
+        parent.document.title = '兴人类俱乐部 管理中心 - 工具 - 编辑常用操作';
+        if (parent.document.getElementById('admincpnav'))
+        parent.document.getElementById('admincpnav').innerHTML = '工具&nbsp;&raquo;&nbsp;编辑常用操作&nbsp;&nbsp;<a target="main" title="添加到常用操作" href="admin.php?action=misc&operation=custommenu&do=add&title=编辑常用操作&url=admin.php?action=misc&operation=$operation">[+]</a>';</script>
+    <div class="itemtitle"><h3>编辑常用操作</h3></div>
+    <form name="cpform" method="post" autocomplete="off" action="admin.php?action=misc&operation=custommenu" id="cpform">
+        <input type="hidden" id="formhash" name="formhash" value="{FORMHASH}" />
+        <input type="hidden" id="formscrolltop" name="scrolltop" value="" />
+        <input type="hidden" name="anchor" value="" />
+        <table class="tb tb2 ">
+            <tr class="header">
+                <th></th>
+                <th>显示顺序</th>
+                <th>名称</th>
+                <th>URL</th>
+            </tr>
+            <!--{eval $num=1;}-->
+            <!--{loop $_G['datalist'] $rw}-->
+            <tr class="hover">
+                <td class="td25"><input type="checkbox" class="checkbox" name="delete[]" value="{$rw[id]}"></td>
+                <td><input type="text" class="txt" size="3" name="displayordernew[{$rw[id]}]" value="{$rw[displayorder]}"></td>
+                <td><input type="text" class="txt" size="25" name="titlenew[{$rw[id]}]" value="{$rw[title]}"></td>
+                <td><input type="text" class="txt" size="40" name="urlnew[{$rw[id]}]" value="{$rw[url]}"></td>
+            </tr>
+            <!--{eval $num++;}-->
+            <!--{/loop}-->
+            <tr>
+                <td></td>
+                <td colspan="3">
+                    <div><a href="###" onclick="addrow(this, 0)" class="addtr">添加常用操作</a></div>
+                </td>
+            </tr>
+            <tr>
+                <td class="td25">
+                    <input type="checkbox" name="chkall" id="chkallwOAh" class="checkbox" onclick="checkAll('prefix', this.form, 'delete')" />
+                    <label for="chkallwOAh">删?</label>
+                </td>
+                <td colspan="15">
+                    <div class="fixsel">
+                        <input type="submit" class="btn" id="submit_optionsubmit" name="optionsubmit" title="按 Enter 键可随时提交您的修改" value="提交" />
+                    </div>
+                </td>
+            </tr>
+            <script type="text/JavaScript">_attachEvent(document.documentElement, 'keydown', function (e) { entersubmit(e, 'optionsubmit'); });</script>
+        </table>
+    </form>
+
+</div>
+<!--{template admincp/common/footer}-->

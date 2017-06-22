@@ -1,0 +1,100 @@
+<!--{template admincp/common/header}-->
+<div class="container" id="cpcontainer">
+    <script type="text/JavaScript">
+        parent.document.title = '兴人类俱乐部 管理中心 - 全局 - 时间设置';
+        if (parent.document.getElementById('admincpnav'))
+        parent.document.getElementById('admincpnav').innerHTML = '全局&nbsp;&raquo;&nbsp;时间设置&nbsp;&nbsp;<a target="main" title="添加到常用操作" href="admin.php?action=misc&operation=custommenu&do=add&title=时间设置&url=admin.php?action=setting&operation=$operation">[+]</a>';</script>
+    <div class="itemtitle"><h3>时间设置</h3></div>
+    <form name="cpform" method="post" autocomplete="off" action="admin.php?action=setting&operation=$operation&edit=yes" id="cpform" enctype="multipart/form-data">
+        <input type="hidden" id="formhash" name="formhash" value="{FORMHASH}" />
+        <input type="hidden" id="formscrolltop" name="scrolltop" value="" />
+        <input type="hidden" name="anchor" value="" />
+        <input type="hidden" name="operation" value="basic">
+        <table class="tb tb2 ">
+            <tr><td colspan="15" class="partition">日期和时间格式:</td></tr>
+            <tr><td colspan="2" class="td27" s="1">默认日期格式:</td></tr>
+            <tr class="noborder">
+                <td class="vtop rowform">
+                    <input name="settingnew[dateformat]" value="$setting['dateformat']" type="text" class="txt" />
+                </td>
+                <td class="vtop tips2" s="1">使用 yyyy(yy) 表示年，mm 表示月，dd 表示天。如 yyyy-mm-dd 表示 2000-1-1</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="td27" s="1">默认时间格式::</td>
+            </tr>
+            <tr class="noborder">
+                <td class="vtop rowform">
+                    <input class="radio" type="radio" name="settingnew[timeformat]" value="24" checked> 24 小时制
+                    <input class="radio" type="radio" name="settingnew[timeformat]" value="12" > 12 小时制
+                </td>
+                <td class="vtop tips2" s="1"></td>
+            </tr>
+            <tr><td colspan="2" class="td27" s="1">人性化时间格式:</td></tr>
+            <tr class="noborder">
+                <td class="vtop rowform">
+                    <ul>
+                        <li <!--{if $setting['dateconvert']==1}--> class="checked" <!--{/if}-->><input class="radio" type="radio" name="settingnew[dateconvert]" value="1" <!--{if $setting['dateconvert']==1}--> checked <!--{/if}-->>&nbsp;是</li>
+                        <li<!--{if $setting['dateconvert']==0}--> class="checked" <!--{/if}-->><input class="radio" type="radio" name="settingnew[dateconvert]" value="0" <!--{if $setting['dateconvert']==0}--> checked <!--{/if}-->>&nbsp;否</li>
+                    </ul>
+                </td>
+                <td class="vtop tips2" s="1"> 是 否选择“是”，站点中的时间将显示以“n分钟前”、“昨天”、“n天前”等形式显示</td>
+            </tr>
+            <tr><td colspan="2" class="td27" s="1">默认时差:</td></tr>
+            <tr class="noborder">
+                <td class="vtop rowform">
+                    <select name='global_timeoffset' onchange="if (this.value !== '')
+                                $('settingnew[timeoffset]').value = this.value;">
+                        <option value='' >选择公共时区</option>
+                        <option value='-12' >(GMT -12:00) 埃尼威托克岛, 夸贾林..</option>
+                        <option value='-11' >(GMT -11:00) 中途岛, 萨摩亚群岛..</option>
+                        <option value='-10' >(GMT -10:00) 夏威夷</option>
+                        <option value='-9' >(GMT -09:00) 阿拉斯加</option>
+                        <option value='-8' >(GMT -08:00) 太平洋时间(美国和加拿..</option>
+                        <option value='-7' >(GMT -07:00) 山区时间(美国和加拿大..</option>
+                        <option value='-6' >(GMT -06:00) 中部时间(美国和加拿大..</option>
+                        <option value='-5' >(GMT -05:00) 东部时间(美国和加拿大..</option>
+                        <option value='-4' >(GMT -04:00) 大西洋时间(加拿大), ..</option>
+                        <option value='-3.5' >(GMT -03:30) 纽芬兰</option>
+                        <option value='-3' >(GMT -03:00) 巴西利亚, 布宜诺斯艾..</option>
+                        <option value='-2' >(GMT -02:00) 中大西洋, 阿森松群岛,..</option>
+                        <option value='-1' >(GMT -01:00) 亚速群岛, 佛得角群岛 ..</option>
+                        <option value='0' >(GMT) 卡萨布兰卡, 都柏林, 爱丁堡, ..</option>
+                        <option value='1' >(GMT +01:00) 柏林, 布鲁塞尔, 哥本..</option>
+                        <option value='2' >(GMT +02:00) 赫尔辛基, 加里宁格勒,..</option>
+                        <option value='3' >(GMT +03:00) 巴格达, 利雅得, 莫斯..</option>
+                        <option value='3.5' >(GMT +03:30) 德黑兰</option>
+                        <option value='4' >(GMT +04:00) 阿布扎比, 巴库, 马斯..</option>
+                        <option value='4.5' >(GMT +04:30) 坎布尔</option>
+                        <option value='5' >(GMT +05:00) 叶卡特琳堡, 伊斯兰堡,..</option>
+                        <option value='5.5' >(GMT +05:30) 孟买, 加尔各答, 马德..</option>
+                        <option value='5.75' >(GMT +05:45) 加德满都</option>
+                        <option value='6' >(GMT +06:00) 阿拉木图, 科伦坡, 达..</option>
+                        <option value='6.5' >(GMT +06:30) 仰光</option>
+                        <option value='7' >(GMT +07:00) 曼谷, 河内, 雅加达..</option>
+                        <option value='8' selected="selected">(GMT +08:00) 北京, 香港, 帕斯, 新..</option>
+                        <option value='9' >(GMT +09:00) 大阪, 札幌, 首尔, 东..</option>
+                        <option value='9.5' >(GMT +09:30) 阿德莱德, 达尔文..</option>
+                        <option value='10' >(GMT +10:00) 堪培拉, 关岛, 墨尔本,..</option>
+                        <option value='11' >(GMT +11:00) 马加丹, 新喀里多尼亚,..</option>
+                        <option value='12' >(GMT +12:00) 奥克兰, 惠灵顿, 斐济,..</option>
+                    </select><br><br>
+                    <input id="settingnew[timeoffset]" type="text" class="txt" value="8" name="settingnew[timeoffset]">
+                </td>
+                <td class="vtop tips2" s="1">当地时间与 GMT 的时差。遇夏制时的情况也可以手动输入，如：-7.5</td>
+            </tr>
+        </table>
+
+        <table class="tb tb2 ">
+            <tr>
+                <td colspan="15">
+                    <div class="fixsel">
+                        <input type="submit" class="btn" id="submit_settingsubmit" name="settingsubmit" title="按 Enter 键可随时提交您的修改" value="提交" />
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <script type="text/JavaScript">_attachEvent(document.documentElement, 'keydown', function (e) { entersubmit(e, 'settingsubmit'); });</script>
+    </form>
+
+</div>
+<!--{template admincp/common/footer}-->

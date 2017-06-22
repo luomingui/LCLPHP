@@ -1,0 +1,110 @@
+<!--{template admincp/common/header}-->
+<div class="container" id="cpcontainer">
+    <script type="text/JavaScript">
+        parent.document.title = '兴人类俱乐部 管理中心 - 新闻 - 发布';
+        if (parent.document.getElementById('admincpnav'))
+        parent.document.getElementById('admincpnav').innerHTML = '新闻&nbsp;&raquo;&nbsp;发布&nbsp;&nbsp;<a target="main" title="添加到常用操作" href="admin.php?action=misc&operation=custommenu&do=add&title=发布新闻&url=admin.php?action=news&operation=$operation">[+]</a>';
+    </script>
+    <div class="itemtitle">
+        <h3>发布新闻</h3>
+        <ul class="tab1" id="submenu">
+            <li><a href="admin.php?action=news"><span>文章列表</span></a></li>
+            <li id="nav_basic" onclick="showanchor(this)" class="current"><a href="#"><span>发布</span></a></li>
+        </ul>
+    </div>
+    <form name="cpform" method="post" autocomplete="off" action="admin.php?action=news&operation=$operation" id="cpform" enctype="multipart/form-data">
+        <input type="hidden" id="formhash" name="formhash" value="{FORMHASH}" />
+        <input type="hidden" id="formscrolltop" name="scrolltop" value="" />
+        <input type="hidden" name="anchor" value="" />
+        <input type="hidden" name="uid" value="$_G['adminid']" />
+        <input type="hidden" name="aid" value="$news['aid']" />
+        <table class="tb tb2 ">
+            <tr><td colspan="2" class="td27" s="1">文章标题:</td></tr>
+            <tr class="noborder">
+                <td class="vtop rowform">
+                    <input name="title" value="$news['title']" type="text" class="txt" />
+                </td>
+                <td class="vtop tips2" s="1"></td>
+            </tr>
+            <tr><td colspan="2" class="td27" s="1">频道栏目:</td></tr>
+            <tr class="noborder">
+                <td class="vtop rowform">
+                    <div class="ftid">
+                        $selectfrom
+                    </div>
+                </td>
+                <td class="vtop tips2" s="1"></td>
+            </tr>
+            <tr><td colspan="2" class="td27" s="1">内容:</td></tr>
+            <tr class="noborder">
+                <td class="vtop rowform">
+                    <textarea rows="6" ondblclick="textareasize(this, 1)" onkeyup="textareasize(this, 0)" onkeydown="textareakey(this, event)"
+                              name="content" id="content" cols="50" class="tarea" style="width:700px;height:236px;">$news['content']</textarea>
+                    <script type="text/javascript" src="static/js/TQEditor.2.3.8/TQEditor.js" ></script>
+                    <script type="text/javascript">
+                        new TQEditor('content');//必须在表单域后
+                    </script>
+                </td>
+                <td class="vtop tips2" s="1"></td>
+            </tr>
+        </table>
+        <table class="tb tb2 ">
+            <tbody id="advanceoption" style="display: none">
+                <tr>
+                    <td class="vtop rowform">
+                        <p class="td27m">评论设置:</p>
+                        <input type="checkbox" name="allowcomment" class="pc" value="1" />禁止评论
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="vtop rowform">
+                        <p class="td27m">文章来源:</p>
+                        <input name="from" value="$news['from']" type="text" class="txt" />
+                    </td>
+                    <td class="vtop rowform">
+                        <p class="td27m">来源地址:</p>
+                        <input name="fromurl" value="$news['fromurl']" type="text" class="txt" />
+                    </td>
+                </tr>
+
+                <tr><td colspan="2" class="td27" s="1">摘要:</td></tr>
+                <tr class="noborder">
+                    <td class="vtop rowform">
+                        <textarea rows="6" ondblclick="textareasize(this, 1)" onkeyup="textareasize(this, 0)" onkeydown="textareakey(this, event)"
+                                  name="summary" id="summary" cols="50" class="tarea">$news['summary']</textarea>
+                    </td>
+                    <td class="vtop tips2" s="1"></td>
+                </tr>
+
+                <tr>
+                    <td class="vtop rowform">
+                        <p class="td27m">跳转URL:</p>
+                        <input name="url" value="$news['url']" type="text" class="txt" />
+                    </td>
+                    <td class="vtop rowform">
+                        <p class="td27m">原作者:</p>
+                        <input name="author" value="$news['author']" type="text" class="txt" />
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="tb tb2 ">
+            <tr>
+                <td colspan="15">
+                    <div class="fixsel">
+                        <input type="submit" class="btn" id="submit_dosubmit" name="dosubmit" title="按 Enter 键可随时提交您的修改" value="提交" />
+                        <input class="checkbox" type="checkbox" value="1" onclick="document.getElementById('advanceoption').style.display = document.getElementById('advanceoption').style.display == 'none' ? '' : 'none';
+                    this.value = this.value == 1 ? 0 : 1;
+                    this.checked = this.value == 1 ? false : true" id="btn_more" />
+                        <label for="btn_more">更多选项</label>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <script type="text/JavaScript">_attachEvent(document.documentElement, 'keydown', function (e) { entersubmit(e, 'dosubmit'); });</script>
+    </form>
+
+</div>
+<!--{template admincp/common/footer}-->

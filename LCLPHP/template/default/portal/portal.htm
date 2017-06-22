@@ -1,0 +1,45 @@
+<!--{template default/common/header}-->
+<div class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9" id="readercontainer">
+                <ul class="list">
+                    <!--{eval $num=1;}-->
+                    <!--{loop $_G['datalist'] $rw}-->
+                    <li>
+                        <div class="cont">
+                            <h3>[<a class="category">$rw[catname]</a>]<a href="$rw[url]" target="_blank">$rw[title]</a></h3>
+                            <div class="info">
+                                <span class="author">
+                                    <a href="/news/user/profile?uid=37924"></a>&nbsp;发表于&nbsp;$rw[dateline]
+                                </span> 
+                            </div>
+                            <p class="intro">$rw[summary]</p>
+                        </div>
+                    </li>
+                    <!--{eval $num++;}-->
+                    <!--{/loop}-->
+                </ul>
+				  <div class="pagination">$multi</div>
+            </div>
+            <div class="col-md-3">
+                <div class="side-box">
+                    <div class="title clearfix">
+                        <h3>最新文档</h3>
+                    </div>
+                    <div>1、<a href="http://www.open-open.com/doc/view/82c5640aba40470c89770a14f6d98be2" target="_blank">基于mysql的开源dw.pdf</a></div>
+                    <div>2、<a href="http://www.open-open.com/doc/view/d7e3fe0806214c92be2573fa4ac992ba" target="_blank">基于web的java中复杂报表的设计.pdf</a></div>
+                    <div>3、<a href="http://www.open-open.com/doc/view/06b5b3a09e1a43da9ba2708aa0c1c464" target="_blank">gef.docx</a></div>
+                    <div>4、<a href="http://www.open-open.com/doc/view/0fd5ff38a4db4aaa8bfb61000b8de6f7" target="_blank">log4j使用手册.pdf</a></div>
+                    <div>5、<a href="http://www.open-open.com/doc/view/fa08cd14fdb14ac88b5090eaa00a1646" target="_blank">python编程快速上手++让繁琐工作自动化.pdf</a></div>
+                    <div>6、<a href="http://www.open-open.com/doc/view/d8f0cf2af8a3468784ee3669050e0d18" target="_blank">设计模式及优点总结.docx</a></div>
+                    <div>7、<a href="http://www.open-open.com/doc/view/b00ddba5798a4936b7b6493884e19075" target="_blank">c++基础课程讲义.pdf</a></div>
+                    <div>8、<a href="http://www.open-open.com/doc/view/afc4764ddc914863b9c405861f37b2a1" target="_blank">css3教程.pdf</a></div>
+                    <div>9、<a href="http://www.open-open.com/doc/view/841dfae9fd41402fa450e6aa03b20e46" target="_blank">solr 3.5开发应用教程.pdf</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--{template default/common/footer}-->

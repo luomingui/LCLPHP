@@ -1,0 +1,47 @@
+<!--{template admincp/common/header}-->
+<div class="container" id="cpcontainer">
+    <script type="text/JavaScript">
+        parent.document.title = '兴人类俱乐部 管理中心 - 工具 - 运行记录 - $htmltitle';
+        if (parent.document.getElementById('admincpnav'))
+        parent.document.getElementById('admincpnav').innerHTML = '工具&nbsp;&raquo;&nbsp;运行记录&nbsp;&raquo;&nbsp;$htmltitle&nbsp;&nbsp;<a target="main" title="添加到常用操作" href="admin.php?action=misc&operation=custommenu&do=add&title=$htmltitle&url=admin.php?action=logs&operation=$operation">[+]</a>';</script>
+    <div class="floattop">
+        <div class="itemtitle">
+            <h3>运行记录</h3>
+            <ul class="tab1">
+                <li id="addjs0" class="hasdropmenu" onmouseover="dropmenu(this);">
+                    <a href="#"><span>用户记录<em>&nbsp;&nbsp;</em></span></a>
+                    <div id="addjs0child" class="dropmenu" style="display:none;">
+                        <a href="admin.php?action=logs&operation=illegal" class="" onclick="">密码错误</a>
+                        <a href="admin.php?action=logs&operation=ban" class="" onclick="">禁止用户</a>
+                    </div>
+                </li>
+                <li id="addjs1" class="hasdropmenu" onmouseover="dropmenu(this);">
+                    <a href="#"><span>系统记录<em>&nbsp;&nbsp;</em></span></a>
+                    <div id="addjs1child" class="dropmenu" style="display:none;">
+                        <a href="admin.php?action=logs&operation=cp" class="" onclick="">后台访问</a>
+                        <a href="admin.php?action=logs&operation=error" class="" onclick="">系统错误</a>
+                        <a href="admin.php?action=logs&operation=sendmail" class="" onclick="">邮件发送失败</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="floattopempty"></div>
+    <form name="cpform" method="post" autocomplete="off" action="admin.php?action=logs&operation=$operation" id="cpform">
+        <input type="hidden" name="formhash" value="{FORMHASH}" />
+        <input type="hidden" id="formscrolltop" name="scrolltop" value="" />
+        <input type="hidden" name="anchor" value="" />
+        <!--{$htmlcontext}-->
+        <table class="tb tb2 ">
+            <tr>
+                <td colspan="15">
+                    <div class="cuspages right">
+                        <!--{$multipage}-->
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</div>
+<!--{template admincp/common/footer}-->

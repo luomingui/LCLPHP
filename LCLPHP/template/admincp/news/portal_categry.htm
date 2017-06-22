@@ -1,0 +1,87 @@
+<!--{template admincp/common/header}-->
+<div class="container" id="cpcontainer">
+    <script type="text/JavaScript">
+        parent.document.title = '管理中心 - 新闻 - 频道栏目';
+        if (parent.document.getElementById('admincpnav'))
+        parent.document.getElementById('admincpnav').innerHTML = '新闻&nbsp;&raquo;&nbsp;频道栏目&nbsp;&nbsp;<a target="main" title="添加到常用操作" href="admin.php?action=misc&operation=custommenu&do=add&title=频道栏目&url=admin.php?action=newscategry">[+]</a>';
+    </script>
+    <div class="floattop">
+        <div class="itemtitle">
+            <span style="float: right; padding-right: 40px;">
+                <a href="javascript:;"
+                   onclick="document.getElementById('tb_search').style.display = '';
+                           document.getElementById('a_search_show').style.display = 'none';
+                           document.getElementById('a_search_hide').style.display = '';" id="a_search_show" style="display:none">显示搜索框</a>
+                <a href="javascript:;"
+                   onclick="document.getElementById('tb_search').style.display = 'none';
+                           document.getElementById('a_search_show').style.display = '';
+                           document.getElementById('a_search_hide').style.display = 'none';" id="a_search_hide">隐藏搜索框</a>
+            </span>
+            <h3>频道栏目</h3>
+            <ul class="tab1">
+                <li class="current"><a href="admin.php?action=newscategry"><span>列表</span></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="floattopempty"></div>
+    <form name="cpform" method="post" autocomplete="off" action="admin.php?action=newscategry&operation=list" id="cpform">
+        <input type="hidden" id="formhash" name="formhash" value="{FORMHASH}" />
+        <input type="hidden" id="formscrolltop" name="scrolltop" value="" />
+        <input type="hidden" name="anchor" value="" />
+        <div style="height:30px;line-height:30px;">
+            <a href="javascript:;" onclick="show_all()">全部展开</a> |
+            <a href="javascript:;" onclick="hide_all()">全部折叠</a>
+            <input type="text" id="srchforumipt" class="txt" />
+            <input type="submit" class="btn" value="搜索" onclick="return srchforum()" />
+        </div>
+        <table class="tb tb2 " id="portalcategory_header" style="min-width:900px;*width:900px;">
+            <tr class="header tbm">
+                <th width="25"></th>
+                <th width="60"></th>
+                <th>分类名称</th>
+                <th width="185">操作</th>
+                <th width="100">文章操作</th>
+            </tr>
+        </table>
+        <script type="text/javascript">floatbottom('portalcategory_header');</script>
+        <table class="tb tb2 " style="min-width:900px;*width:900px;">
+            <tr class="header">
+                <th width="25"></th>
+                <th width="60"></th>
+                <th>分类名称</th>
+                <th width="185">操作</th>
+                <th width="100">文章操作</th>
+            </tr>
+            <!--{$html_talbe}-->
+            <tbody>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td colspan="6">
+                        <div>
+                            <a class="addtr" href="admin.php?action=newscategry&operation=add&upid=0">添加频道</a>
+                        </div>
+                    </td>
+                    <td colspan="3">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td colspan="15">
+                        <div class="fixsel">
+                            <input type="submit" class="btn" id="submit_editsubmit" name="editsubmit" title="按 Enter 键可随时提交您的修改" value="提交" />
+                            <script type="text/JavaScript">
+                                _attachEvent(document.documentElement, 'keydown', function (e){entersubmit(e, 'editsubmit');});
+                            </script>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <script type="text/Javascript">
+        var rowtypedata = [
+        [[1, '', ''], [4, '<div class="parentboard"><input type="text" class="txt" value="添加频道" name="newname[{1}][]"/></div>']],
+        [[1, '<input type="text" class="txt" name="neworder[{1}][]" value="0" />', 'td25'], [4, '<div class="board"><input type="text" class="txt" value="添加频道子栏目" name="newname[{1}][]"/>  <input type="checkbox" name="newinheritance[{1}][]" value="1" checked>继承上级权限</div>']],
+        [[1, '<input type="text" class="txt" name="neworder[{1}][]" value="0" />', 'td25'], [4, '<div class="childboard"><input type="text" class="txt" value="添加三级频道栏目" name="newname[{1}][]"/> <input type="checkbox" name="newinheritance[{1}][]" value="1" checked>继承上级权限</div>']],
+        ];
+    </script>
+</div>
+<!--{template admincp/common/footer}-->

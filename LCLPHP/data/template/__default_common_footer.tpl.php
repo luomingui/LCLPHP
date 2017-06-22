@@ -1,0 +1,126 @@
+<?php if(!defined('IN_LCL')) exit('Access Denied'); ?>
+  <div class="footer">
+            <div class="navbar-lines">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <div class="row footer-info">
+                <div class="text-left col-baseline col-md-10 col-md-offset-1">
+                    <div class="footer-brand">
+                        <a href="/">
+                            <img src="<?php echo $_G['siteurl'];?>template/default/res/images/logo-dark.png" class="img-responsive footer-logo" />
+                            <span></span>
+                        </a>
+                    </div>
+                    <div class="footer-copyright">
+                        Copyright &copy; 2017
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+ <div id="loader" class="loader loader-white" style="display:none">
+        <div class="loader-inner line-scale">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <!--[if lte IE 6]>
+    <div class="mask" >
+        <h1><strong>请升级您的浏览器</strong></h1>
+        <h3>为了保证您的浏览体验请您升级您的浏览器，或者安装<a href="http://www.google.cn/chrome/browser/">Chrome</h3>
+    </div>
+    <![endif]-->
+
+    <script src='<?php echo $_G['siteurl'];?>template/default/res/js/jquery.js'></script>
+    <script src='<?php echo $_G['siteurl'];?>template/default/res/js/theater.min.js'></script>
+    <script src="<?php echo $_G['siteurl'];?>template/default/res/js/bootstrap.js" type="text/javascript"></script>
+    <script>
+
+        $("#content").show();
+        $("#loader").show();
+
+        var navbarTransparent = true;
+
+        function changeNavbarTransparent(flag) {
+            navbarTransparent = flag;
+            if (navbarTransparent) {
+                $('.navbar').addClass('navbar-transparent');
+                $('.navbar-logo').attr('src', '<?php echo $_G['siteurl'];?>template/default/res/images/logo-light.png');
+            }
+            else {
+                $('.navbar').removeClass('navbar-transparent');
+                $('.navbar-logo').attr('src', '<?php echo $_G['siteurl'];?>template/default/res/images/logo-dark.png');
+            }
+        }
+
+        function checkNavbarTransparent() {
+            if ($(document).scrollTop() > 1 /*$(window).height() - 64*/) {
+                if (false != navbarTransparent) {
+                    changeNavbarTransparent(false);
+                }
+            } else {
+                if (false == navbarTransparent) {
+                    changeNavbarTransparent(true);
+                }
+            }
+        }
+
+        var isMobileScreen = ($(window).width() <= 768 ? true : false);
+        var isMobileDevice = /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent) || /(Android)/i.test(navigator.userAgent);
+
+        if (isMobileScreen) {
+            $('#video').hide();
+            $('#arrow').hide();
+            changeNavbarTransparent(false);
+        } else {
+            changeNavbarTransparent(true);
+        }
+
+        $(document).ready(function () {
+//导航选中
+$(".navbar-nav li").click(function() {  
+$(this).addClass("active").siblings().removeClass("active");  
+});  
+
+            if (false == isMobileScreen) {
+                $(window).on('scroll', function () {
+                    checkNavbarTransparent();
+                });
+            }
+
+            setTimeout(function () {
+
+                $('#loader').fadeOut(600);
+
+                //if (false == isMobileDevice) {
+                //    $('#video').append('<source src="<?php echo $_G['siteurl'];?>template/default/res/video/big_hero.mp4" type="video/mp4">');
+                //}
+
+                if (false == isMobileScreen) {
+                    setTimeout(function () {
+                        var theater = theaterJS();
+                        theater.addActor('geekzoo', { speed: 0.4, accuracy: 1.0 });
+                        theater.addScene('geekzoo:您的朋友', 2000);
+                        theater.addScene('geekzoo:您的同事', 2000);
+                        theater.addScene('geekzoo:您的伙伴', 2000);
+                        theater.addScene(theater.replay.bind(theater));
+                    }, 600);
+                }
+            }, 600);
+        });
+
+    </script><?php output();?></body>
+</html>

@@ -1,0 +1,112 @@
+<!--{template admincp/common/header}-->
+<div class="container" id="cpcontainer">
+    <script type="text/JavaScript">
+        parent.document.title = '管理中心 - 运营 - 支付方式';
+        if (parent.document.getElementById('admincpnav'))
+        parent.document.getElementById('admincpnav').innerHTML = '运营&nbsp;&raquo;&nbsp;支付方式&nbsp;&nbsp;';
+    </script>
+    <div class="floattop">
+        <div class="itemtitle">
+            <h3>支付方式</h3>
+            <ul class="tab1">
+                <li><a href="admin.php?action=ec&operation=alipay"><span>支付宝</span></a></li>
+                <li class="current"><a href="admin.php?action=ec&operation=tenpay"><span>财付通</span></a></li>
+                <li><a href="admin.php?action=ec&operation=credit"><span>诚信规则</span></a></li>
+            </ul>
+        </div>
+    </div>
+    <table class="tb tb2 " id="tips">
+        <tr><th  class="partition">技巧提示</th></tr>
+        <tr><td class="tipsblock" s="1">
+                <ul id="tipslis">
+                    <li>“财付通”(<a href="http://www.tenpay.com" target="_blank">http://www.tenpay.com</a>)
+                        是腾讯公司创办的中国领先的在线支付平台，为用户提供积分购买交易平台。</li>
+                    <li>如需启用积分充值即时到账，请使用财付通<b>企业版</b>并开通<b>即时到账交易</b>；否则，只需要开通“<b>中介担保交易</b>”即可。</li>
+                    <li id="tips_more" style="border: none; background: none; margin-bottom: 6px;">
+                        <a href="###" onclick="var tiplis = document.getElementById('tipslis').getElementsByTagName('li');
+                                for (var i = 0; i < tiplis.length; i++) {
+                                    tiplis[i].style.display = '';
+                                }
+                                document.getElementById('tips_more').style.display = 'none';">显示全部提示...</a></li>
+                    <li style="display: none">
+                        <b>由于涉及现金交易，为避免因操作不当而造成的资金损失，请在开始使用财付通积分交易功能(不包含财付通按钮功能)前，
+                            务必仔细阅读《用户使用说明书》中有关电子商务的部分，
+                            当确认完全理解和接受相关流程及使用方法后再进行相关设置。</b></li>
+                    <li style="display: none">您可以设置允许用户通过现金在线支付的方式，为其交易积分账户充值，用于购买帖子内容、购买用户组权限、
+                        积分转账或用户组升级等功能。财付通积分交易功能，需在“积分设置”中启用交易积分，并同时设置相应的积分策略以满足不同场合的需要。
+                        请务必正确设置您的收款财付通账号，否则将造成用户付款后积分无法实时到账，造成大量需要人工处理的订单信息。</li>
+                    <li style="display: none">除官方网站或官方论坛另行通知以外，提供的财付通支付服务每笔交易收取 1% 的手续费。
+                        请及时关注相关业务的最新通知，各项政策或流程的变更、调整，以官方网站或官方论坛提供的信息为准。</li>
+                    <li style="display: none">您使用财付通服务是建立在完全自愿的基础上，除因主观恶意的因素造成的资金损失以外，
+                        公司不对因使用此功能造成的任何损失承担责任。</li>
+                    <li style="display: none">财付通服务热线：0755-83762288-2(全天24小时服务热线)</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+
+    <form name="cpform" method="post" autocomplete="off" action="admin.php?action=ec&operation=tenpay" id="cpform" >
+
+        <input type="hidden" id="formhash" name="formhash" value="{FORMHASH}" />
+        <input type="hidden" id="formscrolltop" name="scrolltop" value="" />
+        <input type="hidden" name="anchor" value="" />
+
+        <table class="tb tb2 nobdb">
+            <tr><th colspan="15" class="partition">担保交易设置</th></tr>
+            <tr><td colspan="2" class="td27" s="1">担保交易收款账号:</td></tr>
+            <tr class="noborder">
+                <td class="vtop rowform">
+                    <input name="settingsnew[ec_tenpay_opentrans_chnid]" value="$settings['ec_tenpay_opentrans_chnid']" type="text" class="txt"   />
+                </td>
+                <td class="vtop tips2" s="1">开通了担保交易权限的财付通账号，如您没有开通担保交易权限，
+                    <a href="http://union.tenpay.com/mch/mch_register_1.shtml" target="_blank">请点击这里申请</a>
+                </td>
+            </tr>
+            <tr><td colspan="2" class="td27" s="1">担保交易账号密钥:</td></tr>
+            <tr class="noborder">
+                <td class="vtop rowform">
+                    <input name="settingsnew[ec_tenpay_opentrans_key]" value="$settings['ec_tenpay_opentrans_key']" type="text" class="txt"   />
+                </td>
+                <td class="vtop tips2" s="1"></td>
+            </tr>
+            <tr><th colspan="15" class="partition">即时到账设置</th></tr>
+            <tr><td colspan="2" class="td27" s="1">财付通即时到账商户号:</td></tr>
+            <tr class="noborder">
+                <td class="vtop rowform">
+                    <input name="settingsnew[ec_tenpay_bargainor]" value="$settings['ec_tenpay_bargainor']" type="text" class="txt"   />
+                </td>
+                <td class="vtop tips2" s="1">如果开启兑换功能，请填写真实有效的财付通企业版账号，用于收取用户以现金兑换交易积分的相关款项。如账号无效或密钥有误，
+                    将导致用户支付后无法正确对其积分账户自动充值。 <br />如您没有财付通帐号，
+                    <a href="http://union.tenpay.com/mch/mch_register.shtml?sp_suggestuser=fc@comsenz.com" target="_blank">请点击这里注册</a>
+                </td>
+            </tr>
+            <tr><td colspan="2" class="td27" s="1">即时到账密钥:</td></tr>
+            <tr class="noborder">
+                <td class="vtop rowform">
+                    <input name="settingsnew[ec_tenpay_key]" value="$settings['ec_tenpay_key']" type="text" class="txt"   />
+                </td>
+                <td class="vtop tips2" s="1">与商户号对应的密钥，由长度为32的大小写字母、数字组成，可在财付通后台获取</td>
+            </tr>
+            <tr><td colspan="2" class="td27" s="1">支付测试:</td></tr>
+            <tr class="noborder">
+                <td class="vtop rowform">
+                    <a href="admin.php?action=ec&operation=tenpay&checktype=credit" target="_blank">积分充值订单测试</a><br />
+                    <a href="admin.php?action=ec&operation=tenpay&checktype=virtualgoods" target="_blank">虚拟商品订单测试</a><br />
+                    <a href="admin.php?action=ec&operation=tenpay&checktype=goods" target="_blank">实物商品订单测试</a><br />
+                </td>
+                <td class="vtop tips2" s="1">本测试将模拟提交 1 元人民币的订单进行测试，如果提交后成功出现付款界面，说明您站点的财付通功能可以正常使用</td>
+            </tr>
+        </table>
+        <table class="tb tb2 nobdt">
+            <tr>
+                <td colspan="15">
+                    <div class="fixsel">
+                        <input type="submit" class="btn" id="submit_tenpaysubmit" name="tenpaysubmit" title="按 Enter 键可随时提交您的修改" value="提交" />
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <script type="text/JavaScript">_attachEvent(document.documentElement, 'keydown', function (e) { entersubmit(e, 'tenpaysubmit'); });</script>
+    </form>
+</div>
+<!--{template admincp/common/footer}-->

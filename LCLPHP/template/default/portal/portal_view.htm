@@ -1,0 +1,24 @@
+<!--{template default/common/header}-->
+
+<table class="tb tb2 ">
+    <tr><th colspan="15" class="partition">文章列表</th></tr>
+    <tr class="header">
+        <th></th>
+        <th>文章标题</th>
+        <th>频道栏目</th>
+        <th>发布时间</th>
+    </tr>
+    <!--{eval $num=1;}-->
+    <!--{loop $_G['articles'] $rw}-->
+    <tr class="hover">
+        <td class="td25"></td>
+        <td><a href="$rw[url]" target="_blank">  {$rw[title]}</a></td>
+        <td>{$rw[catname]}</td>
+        <td>{$rw[dateline]}</td>
+    </tr>
+    <!--{eval $num++;}-->
+    <!--{/loop}-->
+</table>
+
+
+<!--{template default/common/footer}-->

@@ -1,0 +1,75 @@
+<!--{template admincp/common/header}-->
+<div class="container" id="cpcontainer">
+    <script type="text/JavaScript">
+        parent.document.title = '兴人类俱乐部 管理中心 - 全局 - {lang menu_setting_district}';
+        if (parent.document.getElementById('admincpnav'))
+            parent.document.getElementById('admincpnav').innerHTML = '全局&nbsp;&raquo;&nbsp;{lang menu_setting_district}&nbsp;&nbsp;<a target="main" title="添加到常用操作" href="admin.php?action=misc&operation=custommenu&do=add&title={lang menu_setting_district}&url=admin.php?action=setting&operation=$operation">[+]</a>';</script>
+    <div class="itemtitle"><h3>{lang menu_setting_district}</h3></div>
+    <table class="tb tb2 " id="tips">
+        <tr><th class="partition">技巧提示</th></tr>
+        <tr>
+            <td class="tipsblock" s="1">
+                <ul id="tipslis">
+                    <li>您可以自己编辑地区数据</li>
+                    <li>添加，编辑或删除操作后需要点击“提交”按钮才生效</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    <form name="cpform" method="post" autocomplete="off" action="admin.php?action=district&pid=$values[0]&cid=$values[1]&did=$values[2]" id="cpform">
+        <input type="hidden" id="formhash" name="formhash" value="{FORMHASH}" />
+        <input type="hidden" id="formscrolltop" name="scrolltop" value="" />
+        <input type="hidden" name="anchor" value="" />
+
+        <table class="tb tb2 ">
+            选择地区 &nbsp;$html 
+            <tr class="header">
+                <th></th>
+                <th>显示顺序</th>
+                <th>名称</th>
+                <th>操作</th>
+            </tr>
+            <!--{eval $num=1;}-->
+            <!--{loop $thevalues $value}-->
+            <tr id="td_$value[0]" class="hover">
+                <td></td>
+                <td class="td25"><input type="text" id="displayorder_$value[0]" class="txt" name="displayorder[{$value[0]}]" value="$value[2]" /></td>
+                <td><p id="p_$value[0]"><input type="text" id="input_$value[0]" class="txt" name="district[{$value[0]}]" value="$value[1]" /></p></td>
+                <td><a href="javascript:;" onclick="deletedistrict({$value[0]});return false;">删除</a></td>
+            </tr>
+            <!--{eval $num++;}-->
+            <!--{/loop}-->
+
+            <tr><td colspan=2><div><a href="javascript:;" onclick="addrow(this, 0, 1);return false;" class="addtr">添加</a></div></td></tr>
+            <tr><td colspan="15"><div class="fixsel"><input type="submit" class="btn" id="submit_editsubmit" name="editsubmit" title="按 Enter 键可随时提交您的修改" value="提交" /></div></td></tr>
+        </table>
+        <script type="text/javascript">
+            _attachEvent(document.documentElement, 'keydown', function (e) { entersubmit(e, 'editsubmit'); });
+            var rowtypedata = [
+                [[1, '', ''], 
+                [1, '<input type="text" class="txt" name="districtnew_order[]" value="0" />', 'td25'], 
+                [2, '<input type="text" class="txt" name="districtnew[]" value="" />', '']],
+            ];
+
+            function refreshdistrict(province, city, district) {
+                location.href = "admin.php?action=district"
+                    + "&province=" + province + "&city=" + city + "&district=" + district
+                    + "&pid=" + document.getElementById(province).value + "&cid=" + document.getElementById(city).value + "&did=" + document.getElementById(district).value;
+            }
+
+            function editdistrict(did) {
+                document.getElementById('input_' + did).style.display = "block";
+                document.getElementById('span_' + did).style.display = "none";
+            }
+
+            function deletedistrict(did) {
+                var elem = document.getElementById('p_' + did);
+                elem.parentNode.removeChild(elem);
+                var elem = document.getElementById('td_' + did);
+                elem.parentNode.removeChild(elem);
+            }
+        </script>
+    </form>
+
+</div>
+<!--{template admincp/common/footer}-->

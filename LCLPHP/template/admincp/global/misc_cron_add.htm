@@ -1,0 +1,79 @@
+<!--{template admincp/common/header}-->
+<div class="container" id="cpcontainer">
+    <script type="text/JavaScript">
+        parent.document.title = '兴人类俱乐部 管理中心 - 工具 - 计划任务';
+        if (parent.document.getElementById('admincpnav'))
+        parent.document.getElementById('admincpnav').innerHTML = '工具&nbsp;&raquo;&nbsp;计划任务&nbsp;&nbsp;<a target="main" title="添加到常用操作" href="admin.php?action=misc&operation=custommenu&do=add&title=计划任务&url=admin.php?action=misc&operation=$operation">[+]</a>';</script>
+    <div class="itemtitle"><h3>{lang misc_cron_list}-$cron[name]</h3></div>
+    <table class="tb tb2 " id="tips">
+        <tr><th  class="partition">技巧提示</th></tr>
+        <tr><td class="tipsblock" s="1">
+                <ul id="tipslis">
+                    {lang misc_cron_tips}
+                </ul>
+            </td>
+        </tr>
+    </table>
+    <form name="cpform" method="post" autocomplete="off" action="admin.php?action=misc&operation=cron&edit=$cron[cronid]" id="cpform">
+        <input type="hidden" id="formhash" name="formhash" value="{FORMHASH}" />
+        <input type="hidden" id="formscrolltop" name="scrolltop" value="" />
+        <input type="hidden" name="anchor" value="" />
+        <input type='hidden' name='cronid' value="$cron[cronid]" />
+        <table class="tb tb2 ">
+            <tr><td colspan="2" class="td27">每周：</td></tr>
+            <tr class="noborder">
+                <td class="vtop rowform">
+                    <select name="weekdaynew" >
+                        <option value="-1">*</option>
+                        $weekdayselect
+                    </select>
+                </td>
+                <td class="vtop tips2" s="1"><div class="Validform_checktip">设置星期几执行本任务，“*”为不限制，本设置会覆盖下面的“日”设定</div></td>
+            </tr>
+            <tr><td colspan="2" class="td27">每月：</td></tr>
+            <tr class="noborder">
+                <td class="vtop rowform">
+                    <select name="daynew" >
+                        <option value="-1">*</option>
+                        $dayselect
+                    </select>
+                </td>
+                <td class="vtop tips2" s="1"><div class="Validform_checktip">设置哪一日执行本任务，“*”为不限制</div></td>
+            </tr>
+            <tr><td colspan="2" class="td27">小时：</td></tr>
+            <tr class="noborder">
+                <td class="vtop rowform">
+                    <select name="hournew" >
+                        <option value="-1">*</option>
+                        $hourselect
+                    </select>
+                </td>
+                <td class="vtop tips2" s="1"><div class="Validform_checktip">设置哪一小时执行本任务，“*”为不限制</div></td>
+            </tr>
+            <tr><td colspan="2" class="td27">分钟：</td></tr>
+            <tr class="noborder">
+                <td class="vtop rowform">
+                    <input name="minutenew" value="$cronminute" type="text" class="txt"   />
+                </td>
+                <td class="vtop tips2" s="1"><div class="Validform_checktip">设置哪些分钟执行本任务，至多可以设置 12 个分钟值，多个值之间用半角逗号 "," 隔开，留空为不限制</div></td>
+            </tr>
+            <tr><td colspan="2" class="td27">任务脚本：</td></tr>
+            <tr class="noborder">
+                <td class="vtop rowform">
+                    <input name="filenamenew" value="$cron['filename']" type="text" class="txt" />
+                </td>
+                <td class="vtop tips2" s="1"><div class="Validform_checktip">设置本任务的执行程序文件名，请勿包含路径，系统计划任务位于 include/cron/ 目录中，插件计划任务位于 plugin/插件目录/cron/ 目录中</div></td>
+            </tr>
+            <tr>
+                <td colspan="15">
+                    <div class="fixsel">
+                        <input type="submit" class="btn" id="submit_editsubmit" name="editsubmit" title="按 Enter 键可随时提交您的修改" value="提交" />
+                    </div>
+                </td>
+            </tr>
+            <script type="text/JavaScript">_attachEvent(document.documentElement, 'keydown', function (e) { entersubmit(e, 'editsubmit'); });</script>
+        </table>
+    </form>
+
+</div>
+<!--{template admincp/common/footer}-->

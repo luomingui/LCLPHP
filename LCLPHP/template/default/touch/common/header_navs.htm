@@ -1,0 +1,54 @@
+<!-- header start -->
+<header class="header">
+	<div class="hdc cl">
+		<h2><a title="$_G[setting][bbname]" href="index.php"><img src="{TPLDIR}/touch/images/logo.png?{VERHASH}" /></a></h2>
+		<div class="user_fun">
+			<a href="forum.php?forumlist=1" class="icon_threadlist">{lang forum_list}</a>
+			<a href="<!--{if $_G[uid]}-->home.php?mod=space&uid=$_G[uid]&do=profile&mycenter=1<!--{else}-->member.php?mod=logging&action=login<!--{/if}-->" class="icon_userinfo">{lang user_info}<!--{if $_G[member][newpm]}--><span class="icon_msg"></span><!--{/if}--></a>
+		</div>
+	</div>
+	<ul class="navbar">
+		<li id="nav_zte1" class="on"><a href="index.php">首页</a></li>
+		<li id="nav_zte2" ><a href="forum.php?forumlist=1">版块</a></li>
+		<li id="nav_zte3" ><a href="plugin.php?id=handphoto">乐分享</a></li>
+		<li id="nav_zte4" ><a href="plugin.php?id=auction">小兴E店</a></li>
+	</ul>
+<script>
+function navjs(){
+	var urlstr = location.href;
+	tmpUPage = urlstr.split("/");
+	thisUPage = tmpUPage[tmpUPage.length - 1];
+	if (thisUPage.indexOf("portal.php")>=0) {
+	    document.getElementById('nav_zte1').className = 'on';
+		document.getElementById('nav_zte2').className = '';
+		document.getElementById('nav_zte3').className = '';
+		document.getElementById('nav_zte4').className = '';
+	}
+	if (thisUPage.indexOf("forum.php?forumlist=1")>=0) {
+		document.getElementById('nav_zte1').className = '';
+		document.getElementById('nav_zte2').className = 'on';
+		document.getElementById('nav_zte3').className = '';
+		document.getElementById('nav_zte4').className = '';
+	}
+	if (thisUPage.indexOf("plugin.php?id=handphoto")>=0) {
+	 	document.getElementById('nav_zte1').className = '';
+		document.getElementById('nav_zte2').className = '';
+		document.getElementById('nav_zte3').className = 'on';
+		document.getElementById('nav_zte4').className = '';
+	}
+	if (thisUPage.indexOf("plugin.php?id=auction")>=0) {
+		document.getElementById('nav_zte1').className = '';
+		document.getElementById('nav_zte2').className = '';
+		document.getElementById('nav_zte3').className = '';
+		document.getElementById('nav_zte4').className = 'on';
+	}	
+}
+var urlstr = location.href;
+if (urlstr.indexOf("forum.php?mobile=yes") >= 0) {
+   location.href = "forum.php?mod=portal&mobile=2";
+}
+navjs();
+</script>
+</header>
+
+<!-- header end -->

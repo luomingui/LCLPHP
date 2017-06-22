@@ -1,0 +1,77 @@
+<!--{template admincp/common/header}-->
+<div class="container" id="cpcontainer">
+    <script type="text/JavaScript">
+        parent.document.title = '兴人类俱乐部 管理中心 - 工具 - 计划任务';
+        if (parent.document.getElementById('admincpnav'))
+        parent.document.getElementById('admincpnav').innerHTML = '工具&nbsp;&raquo;&nbsp;计划任务&nbsp;&nbsp;<a target="main" title="添加到常用操作" href="admin.php?action=misc&operation=custommenu&do=add&title=计划任务&url=admin.php?action=misc&operation=$operation">[+]</a>';</script>
+    <div class="itemtitle"><h3>{lang misc_cron_list}</h3></div>
+    <table class="tb tb2 " id="tips">
+        <tr><th  class="partition">技巧提示</th></tr>
+        <tr><td class="tipsblock" s="1">
+                <ul id="tipslis">
+                    {lang misc_cron_tips}
+                </ul>
+            </td>
+        </tr>
+    </table>
+    <form name="cpform" method="post" autocomplete="off" action="admin.php?action=misc&operation=cron" id="cpform">
+        <input type="hidden" id="formhash" name="formhash" value="{FORMHASH}" />
+        <input type="hidden" id="formscrolltop" name="scrolltop" value="" />
+        <input type="hidden" name="anchor" value="" />
+        <table class="tb tb2 ">
+            <tr class="header">
+                <th></th>
+                <th>名称</th>
+                <th>可用</th>
+                <th>类型</th>
+                <th>时间</th>
+                <th>上次执行时间</th>
+                <th>下次执行时间</th>
+                <th></th>
+            </tr>
+            <!--{eval $num=1;}-->
+            <!--{loop $_G['datalist'] $rw}-->
+            <tr class="hover">
+                <td class="td25"><input type="checkbox" class="checkbox" name="delete[]" value="{$rw[cronid]}"></td>
+                <td>
+                    <input type="text" class="txt" size="3" name="namenew[{$rw[cronid]}]" value="{$rw[name]}"><br />
+                    $rw[filename]
+                </td>
+                <td>
+                    <!--{if $rw[available]}-->
+                    <img width="20" height="20" src="/static/images/yes.png" onclick="changeTableVal('common_cron', 'cronid', '$rw[cronid]', 'available', this)">
+                    <!--{else}-->
+                    <img width="20" height="20" src="/static/images/cancel.png" onclick="changeTableVal('common_cron', 'cronid', '$rw[cronid]', 'available', this)">
+                    <!--{/if}-->
+                </td>
+                <td>$rw[ctype]</td>
+                <td>$rw[time]</td>
+                <td>$rw[lastrun]</td>
+                <td>$rw[nextrun]</td>
+                <td>
+                    <a href="admin.php?action=misc&operation=cron&edit=$rw[cronid]" class="act">编辑</a><br />
+                    <!--{if $rw[run]}-->
+                    <a href="admin.php?action=misc&operation=cron&run=$rw[cronid]" class="act">执行</a>
+                    <!--{/if}-->
+                </td>
+            </tr>
+            <!--{eval $num++;}-->
+            <!--{/loop}-->
+            <tr><td>新增</td><td colspan="10"><input type="text" class="txt" name="newname" value="" size="20"></td></tr>
+            <tr>
+                <td class="td25">
+                    <input type="checkbox" name="chkall" id="chkallwOAh" class="checkbox" onclick="checkAll('prefix', this.form, 'delete')" />
+                    <label for="chkallwOAh">删?</label>
+                </td>
+                <td colspan="15">
+                    <div class="fixsel">
+                        <input type="submit" class="btn" id="submit_cronssubmit" name="cronssubmit" title="按 Enter 键可随时提交您的修改" value="提交" />
+                    </div>
+                </td>
+            </tr>
+            <script type="text/JavaScript">_attachEvent(document.documentElement, 'keydown', function (e) { entersubmit(e, 'optionsubmit'); });</script>
+        </table>
+    </form>
+
+</div>
+<!--{template admincp/common/footer}-->

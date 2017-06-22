@@ -1,0 +1,46 @@
+<!--{template admincp/common/header}-->
+<div class="container" id="cpcontainer">
+    <script type="text/JavaScript">
+        parent.document.title = '兴人类俱乐部 管理中心 - 全局 - 性能优化';
+        if (parent.document.getElementById('admincpnav'))
+        parent.document.getElementById('admincpnav').innerHTML = '全局&nbsp;&raquo;&nbsp;性能优化&nbsp;&nbsp;<a target="main" title="添加到常用操作" href="admin.php?action=misc&operation=custommenu&do=add&title=性能优化&url=admin.php?action=setting&operation=$operation">[+]</a>';</script>
+    <div class="itemtitle"><h3>内存优化</h3></div>
+    <table class="tb tb2 " id="tips">
+        <tr><th  class="partition">技巧提示</th></tr>
+        <tr>
+            <td class="tipsblock" s="1">
+                <ul id="tipslis">
+                    <li>启用内存优化功能将会大幅度提升程序性能和服务器的负载能力，内存优化功能需要服务器系统以及PHP扩展模块支持</li>
+                    <li>目前支持的内存优化接口有 Memcache、eAccelerator、Alternative PHP Cache(APC)、Xcache、Redis 五种，优化系统将会依据当前服务器环境依次选用接口</li>
+                    <li>内存接口的主要设置位于 config_global.php 当中，您可以通过编辑 config_global.php 进行高级设置</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    <form name="cpform" method="post" autocomplete="off" action="admin.php?action=setting&operation=$operation&edit=yes" id="cpform" enctype="multipart/form-data">
+        <input type="hidden" id="formhash" name="formhash" value="{FORMHASH}" />
+        <input type="hidden" id="formscrolltop" name="scrolltop" value="" />
+        <input type="hidden" name="anchor" value="" />
+        <input type="hidden" name="operation" value="memory">
+        <table class="tb tb2 fixpadding">
+            <tr><th colspan="15" class="partition">{lang setting_memory_status}</th></tr>
+
+            <tr class="header">
+                <th>{lang setting_memory_state_interface}</th>
+                <th>{lang setting_memory_state_extension}</th>
+                <th>{lang setting_memory_state_config}</th>
+                <th>{lang setting_memory_clear}</th>
+                <th></th>
+            </tr>
+            <tr class="hover"><td>$redis[0]</td><td>$redis[1]</td><td>$redis[2]</td><td>$redis[3]</td></tr>
+            <tr class="hover"><td>$memcache[0]</td><td>$memcache[1]</td><td>$memcache[2]</td><td>$memcache[3]</td></tr>
+            <tr class="hover"><td>$apc[0]</td><td>$apc[1]</td><td>$apc[2]</td><td>$apc[3]</td></tr>
+            <tr class="hover"><td>$xcache[0]</td><td>$xcache[1]</td><td>$xcache[2]</td><td>$xcache[3]</td></tr>
+            <tr class="hover"><td>$ea[0]</td><td>$ea[1]</td><td>$ea[2]</td><td>$ea[3]</td></tr>
+            <tr class="hover"><td>$wincache[0]</td><td>$wincache[1]</td><td>$wincache[2]</td><td>$wincache[3]</td></tr>
+        </table>
+
+    </form>
+
+</div>
+<!--{template admincp/common/footer}-->

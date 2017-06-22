@@ -1,0 +1,1 @@
+[27-Apr-2017 10:35:23 PRC] PHP Notice:  Use of undefined constant LCL_ROOT - assumed 'LCL_ROOT' in F:\Github2017\LCLPHP\static\js\uploadify\uploadify.php on line 21
