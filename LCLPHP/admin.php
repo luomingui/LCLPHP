@@ -20,9 +20,7 @@ $admincp->init();
 $admincp_actions_founder = array('templates', 'db', 'founder', 'patch');
 
 $admincp_actions_normal = array('login', 'main', 'frame', 'index', 'misc', 'setting', 'ec', 'contestants', 'logout', 'password',
-    'expscore', 'importscore', 'tools', 'testdata', 'statuser', 'statteam', 'activities', 'logs', 'team', 'founder', 'news',
-    'newscategry', 'district', 'nopgoodscategory', 'nopgoods', 'nopbrand', 'members', 'nopgoodsattribute', 'nopgoodstype', 'member',
-    'usergroup', 'nopspec', 'activityactivity', 'activity', 'activityattachment', 'activitymember');
+	'expscore', 'tools', 'testdata', 'logs', 'founder', 'portalarticle','portalcategry', 'district');
 
 $action = preg_replace('/[^\[A-Za-z0-9_\]]/', '', getgpc('action'));
 $operation = preg_replace('/[^\[A-Za-z0-9_\]]/', '', getgpc('operation'));

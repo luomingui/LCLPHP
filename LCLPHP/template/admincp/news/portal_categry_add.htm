@@ -3,15 +3,15 @@
     <script type="text/JavaScript">
         parent.document.title = '兴人类俱乐部 管理中心 - 新闻 - 频道栏目';
         if (parent.document.getElementById('admincpnav'))
-        parent.document.getElementById('admincpnav').innerHTML = '新闻&nbsp;&raquo;&nbsp;频道栏目&nbsp;&nbsp;<a target="main" title="添加到常用操作" href="admin.php?action=misc&operation=custommenu&do=add&title=频道栏目&url=admin.php?action=news_categry&operation=$operation">[+]</a>';</script>
+            parent.document.getElementById('admincpnav').innerHTML = '新闻&nbsp;&raquo;&nbsp;频道栏目&nbsp;&nbsp;<a target="main" title="添加到常用操作" href="admin.php?action=misc&operation=custommenu&do=add&title=频道栏目&url=admin.php?action=portalcategry&operation=$operation">[+]</a>';</script>
     <div class="itemtitle">
         <h3>频道详细设置</h3>
         <ul class="tab1" id="submenu">
-            <li><a href="admin.php?action=news_categry"><span>列表</span></a></li>
+            <li><a href="admin.php?action=portalcategry"><span>列表</span></a></li>
             <li id="nav_basic" onclick="showanchor(this)" class="current"><a href="#"><span>编辑</span></a></li>
         </ul>
     </div>
-    <form name="cpform" method="post" autocomplete="off" action="admin.php?action=newscategry&operation=$operation&upid=$_GET['upid']" id="cpform" enctype="multipart/form-data">
+    <form name="cpform" method="post" autocomplete="off" action="admin.php?action=portalcategry&operation=$operation&upid=$_GET['upid']" id="cpform" enctype="multipart/form-data">
         <input type="hidden" id="formhash" name="formhash" value="{FORMHASH}" />
         <input type="hidden" id="formscrolltop" name="scrolltop" value="" />
         <input type="hidden" name="anchor" value="" />
@@ -20,7 +20,7 @@
             <!--{if $categryup}-->
             <tr>
                 <th colspan="15" class="partition"> 上级频道:
-                    <a href="admin.php?action=newscategry&operation=edit&catid=$categryup['catid']">$categryup['catname']</a>
+                    <a href="admin.php?action=portalcategry&operation=edit&catid=$categryup['catid']">$categryup['catname']</a>
                     <input type="hidden" name="upid" value="$categryup['catid']" />
                 </th>
             </tr>

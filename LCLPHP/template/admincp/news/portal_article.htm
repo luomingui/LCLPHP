@@ -3,7 +3,7 @@
     <script type="text/JavaScript">
         parent.document.title = '管理中心 - 新闻 - 文章管理';
         if (parent.document.getElementById('admincpnav'))
-        parent.document.getElementById('admincpnav').innerHTML = '新闻&nbsp;&raquo;&nbsp;文章管理&nbsp;&nbsp;<a target="main" title="添加到常用操作" href="admin.php?action=misc&operation=custommenu&do=add&title=文章管理&url=admin.php?action=news">[+]</a>';
+        parent.document.getElementById('admincpnav').innerHTML = '新闻&nbsp;&raquo;&nbsp;文章管理&nbsp;&nbsp;<a target="main" title="添加到常用操作" href="admin.php?action=misc&operation=custommenu&do=add&title=文章管理&url=admin.php?action=portalarticle">[+]</a>';
     </script>
     <div class="floattop">
         <div class="itemtitle">
@@ -19,14 +19,14 @@
             </span>
             <h3>文章管理</h3>
             <ul class="tab1">
-                <li class="current"><a href="admin.php?action=news"><span>文章列表</span></a></li>
-                <li><a href="admin.php?action=news&operation=add"><span>撰写文章</span></a></li>
+                <li class="current"><a href="admin.php?action=portalarticle"><span>文章列表</span></a></li>
+                <li><a href="admin.php?action=portalarticle&operation=add"><span>撰写文章</span></a></li>
             </ul>
         </div>
     </div>
     <div class="floattopempty"></div>
     <form method="get" autocomplete="off" action="admin.php" id="tb_search">
-        <input type="hidden" name="action" value="news" />
+        <input type="hidden" name="action" value="portalarticle" />
         <input type="hidden" name="operation" value="search" />
         <div style="margin-top:8px;">
             <table cellspacing="3" cellpadding="3">
@@ -71,7 +71,7 @@
             </table>
         </div>
     </form>
-    <form name="cpform" method="post" autocomplete="off" action="admin.php?action=news&operation=del" id="cpform">
+    <form name="cpform" method="post" autocomplete="off" action="admin.php?action=portalarticle&operation=del" id="cpform">
         <input type="hidden" name="formhash" value="{FORMHASH}" />
         <input type="hidden" id="formscrolltop" name="scrolltop" value="" />
         <table class="tb tb2 ">
@@ -89,10 +89,10 @@
             <tr class="hover">
                 <td class="td25"><input type="checkbox" class="checkbox" name="ids[]" value="{$rw[aid]}"></td>
                 <td>{$rw[title]}</td>
-                <td><a href="admin.php?action=news&operation=search&catid={$rw[catid]}"> {$rw[catname]}</a></td>
+                <td><a href="admin.php?action=portalarticle&operation=search&catid={$rw[catid]}"> {$rw[catname]}</a></td>
                 <td>{$rw[author]}</td>
                 <td>{$rw[dateline]}</td>
-                <td><a href="admin.php?action=news&operation=edit&aid={$rw[aid]}">编辑</a></td>
+                <td><a href="admin.php?action=portalarticle&operation=edit&aid={$rw[aid]}">编辑</a></td>
             </tr>
             <!--{eval $num++;}-->
             <!--{/loop}-->

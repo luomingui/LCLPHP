@@ -17,7 +17,7 @@ if (!defined('IN_LCL') || !defined('IN_ADMINCP')) {
 $perpage = 10;
 $start = ($page - 1) * $perpage;
 $wheresql = " 1=1 ";
-$mpurl = ADMINSCRIPT . '?action=news&perpage=' . $perpage . '&operation=' . $operation;
+$mpurl = ADMINSCRIPT . '?action=portalarticle&perpage=' . $perpage . '&operation=' . $operation;
 $searchpram = array();
 
 if ($operation == 'search') {
@@ -73,13 +73,13 @@ if ($operation == 'del') {
         }
         $msg = "批量关联活动新闻成功.";
     }
-    cpmsg($msg, 'admin.php?action=news&perpage=' . $perpage . '&page=' . $page, 'succeed');
+    cpmsg($msg, 'admin.php?action=portalarticle&perpage=' . $perpage . '&page=' . $page, 'succeed');
 } else if ($operation == 'add') {
     $op = "add";
     if (submitcheck("dosubmit")) {
         $arr = post_frm();
         C::t('portal_article')->insert($arr);
-        cpmsg('add_succeed', 'admin.php?action=news&perpage=' . $perpage, 'succeed');
+        cpmsg('add_succeed', 'admin.php?action=portalarticle&perpage=' . $perpage, 'succeed');
     } else {
         $selectfrom = showselectfrom();
         include cptemplate('news/portal_article_add');
@@ -90,7 +90,7 @@ if ($operation == 'del') {
         $arr = post_frm();
         $aid = empty($_POST['aid']) ? "0" : $_POST['aid'];
         C::t('portal_article')->update_by_aid($aid, $arr);
-        cpmsg('edit_succeed', 'admin.php?action=news&perpage=' . $perpage, 'succeed');
+        cpmsg('edit_succeed', 'admin.php?action=portalarticle&perpage=' . $perpage, 'succeed');
     } else {
         $news = show_frm();
         $selectfrom = showselectfrom($news['catid']);
@@ -108,7 +108,7 @@ if ($operation == 'del') {
             $rdata[] = $row;
         }
         $_G['datalist'] = $rdata;
-        $multi = multi($count, $perpage, $page, 'admin.php?action=news&perpage=' . $perpage);
+        $multi = multi($count, $perpage, $page, 'admin.php?action=portalarticle&perpage=' . $perpage);
     }
     $selectfrom = showselectfrom($searchpram['catid']);
     include cptemplate('news/portal_article');
@@ -138,7 +138,7 @@ function post_frm() {
 
 function show_frm() {
     global $_G;
-    $uinfo = C::t('news')->fetch_by_aid($_GET['aid']);
+    $uinfo = C::t('portal_article')->fetch_by_aid($_GET['aid']);
     return $uinfo;
 }
 

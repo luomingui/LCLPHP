@@ -3,16 +3,16 @@
     <script type="text/JavaScript">
         parent.document.title = '兴人类俱乐部 管理中心 - 新闻 - 发布';
         if (parent.document.getElementById('admincpnav'))
-        parent.document.getElementById('admincpnav').innerHTML = '新闻&nbsp;&raquo;&nbsp;发布&nbsp;&nbsp;<a target="main" title="添加到常用操作" href="admin.php?action=misc&operation=custommenu&do=add&title=发布新闻&url=admin.php?action=news&operation=$operation">[+]</a>';
+        parent.document.getElementById('admincpnav').innerHTML = '新闻&nbsp;&raquo;&nbsp;发布&nbsp;&nbsp;<a target="main" title="添加到常用操作" href="admin.php?action=misc&operation=custommenu&do=add&title=发布新闻&url=admin.php?action=portalarticle&operation=$operation">[+]</a>';
     </script>
     <div class="itemtitle">
         <h3>发布新闻</h3>
         <ul class="tab1" id="submenu">
-            <li><a href="admin.php?action=news"><span>文章列表</span></a></li>
+            <li><a href="admin.php?action=portalarticle"><span>文章列表</span></a></li>
             <li id="nav_basic" onclick="showanchor(this)" class="current"><a href="#"><span>发布</span></a></li>
         </ul>
     </div>
-    <form name="cpform" method="post" autocomplete="off" action="admin.php?action=news&operation=$operation" id="cpform" enctype="multipart/form-data">
+    <form name="cpform" method="post" autocomplete="off" action="admin.php?action=portalarticle&operation=$operation" id="cpform" enctype="multipart/form-data">
         <input type="hidden" id="formhash" name="formhash" value="{FORMHASH}" />
         <input type="hidden" id="formscrolltop" name="scrolltop" value="" />
         <input type="hidden" name="anchor" value="" />

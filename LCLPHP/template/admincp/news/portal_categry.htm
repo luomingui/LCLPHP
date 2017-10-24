@@ -3,7 +3,7 @@
     <script type="text/JavaScript">
         parent.document.title = '管理中心 - 新闻 - 频道栏目';
         if (parent.document.getElementById('admincpnav'))
-        parent.document.getElementById('admincpnav').innerHTML = '新闻&nbsp;&raquo;&nbsp;频道栏目&nbsp;&nbsp;<a target="main" title="添加到常用操作" href="admin.php?action=misc&operation=custommenu&do=add&title=频道栏目&url=admin.php?action=newscategry">[+]</a>';
+        parent.document.getElementById('admincpnav').innerHTML = '新闻&nbsp;&raquo;&nbsp;频道栏目&nbsp;&nbsp;<a target="main" title="添加到常用操作" href="admin.php?action=misc&operation=custommenu&do=add&title=频道栏目&url=admin.php?action=portalcategry">[+]</a>';
     </script>
     <div class="floattop">
         <div class="itemtitle">
@@ -19,12 +19,12 @@
             </span>
             <h3>频道栏目</h3>
             <ul class="tab1">
-                <li class="current"><a href="admin.php?action=newscategry"><span>列表</span></a></li>
+                <li class="current"><a href="admin.php?action=portalcategry"><span>列表</span></a></li>
             </ul>
         </div>
     </div>
     <div class="floattopempty"></div>
-    <form name="cpform" method="post" autocomplete="off" action="admin.php?action=newscategry&operation=list" id="cpform">
+    <form name="cpform" method="post" autocomplete="off" action="admin.php?action=portalcategry&operation=list" id="cpform">
         <input type="hidden" id="formhash" name="formhash" value="{FORMHASH}" />
         <input type="hidden" id="formscrolltop" name="scrolltop" value="" />
         <input type="hidden" name="anchor" value="" />
@@ -58,7 +58,7 @@
                     <td>&nbsp;</td>
                     <td colspan="6">
                         <div>
-                            <a class="addtr" href="admin.php?action=newscategry&operation=add&upid=0">添加频道</a>
+                            <a class="addtr" href="admin.php?action=portalcategry&operation=add&upid=0">添加频道</a>
                         </div>
                     </td>
                     <td colspan="3">&nbsp;</td>

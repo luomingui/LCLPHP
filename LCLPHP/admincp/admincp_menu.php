@@ -36,8 +36,8 @@ $menu['global'] = array(
 );
 
 $menu['news'] = array(
-    array('menu_news_categry', 'newscategry'),
-    array('menu_news', 'news'),
+    array('menu_news_categry', 'portalcategry'),
+    array('menu_news', 'portalarticle'),
 );
 $menu['extended'] = array(
     array('menu_ec', 'ec_alipay'),

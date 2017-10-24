@@ -15,7 +15,7 @@ if (!defined('IN_LCL') || !defined('IN_ADMINCP')) {
     exit('Access Denied');
 }
 
-$mpurl = ADMINSCRIPT . '?action=news&perpage=' . $perpage . '&operation=' . $operation;
+$mpurl = ADMINSCRIPT . '?action=portalarticle&perpage=' . $perpage . '&operation=' . $operation;
 $operation = in_array($operation, array('delete', 'list', 'add', 'edit')) ? $operation : 'list';
 
 loadcache('newscategory');
@@ -40,7 +40,7 @@ if ($operation == 'list') {
                 C::t('portal_categry')->update($id, array('catname' => $catname, 'displayorder' => $ordernew));
             }
         }
-        cpmsg('portalcategory_update_succeed', 'admin.php?action=newscategry', 'succeed');
+        cpmsg('portalcategory_update_succeed', 'admin.php?action=portalcategry', 'succeed');
     }
 } elseif ($operation == 'delete') {
     $_GET['catid'] = max(0, intval($_GET['catid']));
@@ -48,7 +48,7 @@ if ($operation == 'list') {
         cpmsg('portalcategory_catgory_not_found', '', 'error');
     }
     C::t('portal_categry')->delete($_GET['catid']);
-    cpmsg('delete_succeed', 'admin.php?action=portal_categry', 'succeed');
+    cpmsg('delete_succeed', 'admin.php?action=portalcategry', 'succeed');
 } elseif ($operation == 'edit' || $operation == 'add') {
     $_GET['catid'] = intval($_GET['catid']);
     $_GET['upid'] = intval($_GET['upid']);
@@ -75,7 +75,7 @@ if ($operation == 'list') {
         } else if ($operation == 'edit') {
             C::t('portal_categry')->update($_GET['catid'], $editcat);
         }
-        $url = $operation == 'add' ? 'admin.php?action=newscategry#cat' . $_GET['catid'] : 'admin.php?action=newscategry&operation=edit&catid=' . $_GET['catid'];
+        $url = $operation == 'add' ? 'admin.php?action=portalcategry#cat' . $_GET['catid'] : 'admin.php?action=portalcategry&operation=edit&catid=' . $_GET['catid'];
         cpmsg('portalcategory_edit_succeed', $url, 'succeed');
     }
 }
@@ -104,7 +104,7 @@ function htmldatalist() {
                             $html_child_child .= showcategoryrow($row_child_child, 'lastchildboard');
                         }
                     }
-                    $html_child .= showcategoryrow($row_child, 'board', '<a class="addchildboard" href="admin.php?action=newscategry&operation=add&upid=' . $catid_child . '">添加三级频道栏目</a>') . $html_child_child;
+                    $html_child .= showcategoryrow($row_child, 'board', '<a class="addchildboard" href="admin.php?action=portalcategry&operation=add&upid=' . $catid_child . '">添加三级频道栏目</a>') . $html_child_child;
                 }
             } else {
                 $html_child = "";
@@ -115,19 +115,19 @@ function htmldatalist() {
                     <td class="td25"><input type="text" class="txt" name="neworder[' . $catid . ']" value="' . $displayorder . '" /></td>
                     <td><div class="parentboard"><input type="text" class="txt" name="name[' . $catid . ']" value="' . $catname . '" /></div></td>
                     <td>
-                        <a href="admin.php?action=newscategry&operation=edit&catid=' . $catid . '">编辑</a>&nbsp;
-                        <a href="admin.php?action=newscategry&operation=move&catid=' . $catid . '">转移</a>&nbsp;
-                        <a href="admin.php?action=newscategry&operation=delete&catid=' . $catid . '">删除</a>&nbsp;
+                        <a href="admin.php?action=portalcategry&operation=edit&catid=' . $catid . '">编辑</a>&nbsp;
+                        <a href="admin.php?action=portalcategry&operation=move&catid=' . $catid . '">转移</a>&nbsp;
+                        <a href="admin.php?action=portalcategry&operation=delete&catid=' . $catid . '">删除</a>&nbsp;
                     </td>
                     <td>
-                        <a href="admin.php?action=news&operation=search&&catid=' . $catid . '">管理</a>&nbsp;
-                        <a href="admin.php?action=news&operation=add&&catid=' . $catid . '" >发布</a>
+                        <a href="admin.php?action=portalarticle&operation=search&&catid=' . $catid . '">管理</a>&nbsp;
+                        <a href="admin.php?action=portalarticle&operation=add&&catid=' . $catid . '" >发布</a>
                     </td>
                 </tr></tdoby><tbody id="group_' . $catid . '">' . $html_child . '</tdoby><tr>
                     <td>&nbsp;</td>
                     <td colspan="9">
                         <div class="lastboard">
-                            <a class="addtr" href="admin.php?action=newscategry&operation=add&upid=' . $catid . '">添加频道子栏目</a>
+                            <a class="addtr" href="admin.php?action=portalcategry&operation=add&upid=' . $catid . '">添加频道子栏目</a>
                         </div>
                     </td>
                 </tr>';
@@ -144,13 +144,13 @@ function showcategoryrow($row, $classname, $addurl) {
                     <td class="td25"><input type="text" class="txt" name="neworder[' . $catid_child . ']" value="' . $displayorder_child . '" /></td>
                     <td><div class="' . $classname . '"><input type="text" class="txt" name="name[' . $catid_child . ']" value="' . $catname_child . '" />' . $addurl . '</div></td>
                     <td>
-                        <a href="admin.php?action=newscategry&operation=edit&catid=' . $catid_child . '">编辑</a>&nbsp;
-                        <a href="admin.php?action=newscategry&operation=move&catid=' . $catid_child . '">转移</a>&nbsp;
-                        <a href="admin.php?action=newscategry&operation=delete&catid=' . $catid_child . '">删除</a>&nbsp;
+                        <a href="admin.php?action=portalcategry&operation=edit&catid=' . $catid_child . '">编辑</a>&nbsp;
+                        <a href="admin.php?action=portalcategry&operation=move&catid=' . $catid_child . '">转移</a>&nbsp;
+                        <a href="admin.php?action=portalcategry&operation=delete&catid=' . $catid_child . '">删除</a>&nbsp;
                     </td>
                     <td>
-                        <a href="admin.php?action=news&operation=search&catid=' . $catid_child . '">管理</a>&nbsp;
-                        <a href="admin.php?action=news&operation=add&&catid=' . $catid_child . '" target="_blank">发布</a>
+                        <a href="admin.php?action=portalarticle&operation=search&catid=' . $catid_child . '">管理</a>&nbsp;
+                        <a href="admin.php?action=portalarticle&operation=add&&catid=' . $catid_child . '" target="_blank">发布</a>
                     </td>
                 </tr>';
     return $html_child;
