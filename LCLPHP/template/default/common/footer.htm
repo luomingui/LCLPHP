@@ -106,17 +106,19 @@
 
                 //if (false == isMobileDevice) {
                 //    $('#video').append('<source src="{$_G[siteurl]}template/default/res/video/big_hero.mp4" type="video/mp4">');
-                //}
+                //}project
 
                 if (false == isMobileScreen) {
+                
                     setTimeout(function () {
                         var theater = theaterJS();
                         theater.addActor('geekzoo', { speed: 0.4, accuracy: 1.0 });
                         theater.addScene('geekzoo:您的朋友', 2000);
-                        theater.addScene('geekzoo:您的同事', 2000);
+                        theater.addScene('geekzoo:您的兄弟', 2000);
                         theater.addScene('geekzoo:您的伙伴', 2000);
                         theater.addScene(theater.replay.bind(theater));
                     }, 600);
+
                 }
             }, 600);
         });

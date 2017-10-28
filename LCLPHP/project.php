@@ -1,11 +1,11 @@
 <?php
 
-define('CURSCRIPT', 'index');
+define('CURSCRIPT', 'project');
 
 require './class/class_core.php';
 $lcl = C::app();
 $lcl->init();
 
 
-include simpletemplate('index');
+include simpletemplate('project');
 ?>

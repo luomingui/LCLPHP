@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html class="no-js" lang="zh-CN">
 <head>
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -82,63 +82,77 @@
     </script>
 </head>
 <body style="background-color: #f2f2f2;">
- <div id="content" style="display:none;">
-   <div class="poster">
-            <div class="video-bg">
-                <video autoplay loop muted id="video" class="video"></video>
-            </div>
-            <div class="video-mask"></div>
-            <div class="navbar navbar-fixed-top navbar-transparent">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                                aria-expanded="false" aria-controls="navbar">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="/">
-                            <img class="img-responsive navbar-logo"
-                                 src="{$_G['siteurl']}template/default/res/images/logo-light.png" /><span></span>
-                        </a>
-                    </div>
-                    <div id="navbar" class="collapse navbar-collapse">
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="index.php">首页</a></li>
-                            <li><a href="index.php#scheme">方案</a></li>
-							<!--<li><a href="#product">产品</a></li>-->
-                            <li><a href="index.php#services">服务</a></li>
-                            <li><a href="index.php#case">案例</a></li>
-							 <li><a href="portal.php">新闻</a></li>
-                            <li><a href="index.php#contact">联系</a></li>
-                        </ul>
-                    </div><!--/.nav-collapse -->
+    <div class="poster">
+        <div class="video-bg">
+            <video autoplay loop muted id="video" class="video"></video>
+        </div>
+        <div class="video-mask"></div>
+        <div class="navbar navbar-fixed-top navbar-transparent">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                            aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">
+                        <img class="img-responsive navbar-logo"
+                             src="{$_G['siteurl']}template/default/res/images/logo-light.png" /><span></span>
+                    </a>
                 </div>
-                <div class="navbar-lines">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/">首页</a></li>
+                        <li><a href="index.php#scheme">方案</a></li>
+                        <li><a href="project.php">产品</a></li>
+                        <li><a href="index.php#services">服务</a></li>
+                        <li><a href="index.php#case">案例</a></li>
+                        <li><a href="portal.php">新闻</a></li>
+                        <li><a href="index.php#contact">联系</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="masthead container">
-                <p class="title">
-                    我们不是机构，我们是 <span id="geekzoo" class="highlight">您的伙伴</span>
-                </p>
-                <p class="subtitle" id="brief">
-                    江西永新科技有限责任公司创始于2017年。至今，我们已经参与完成近百个网站端与移动端专案。我们为客户提供完整的解决方案，包括从视觉识别、用户界面、信息架构、逻辑流程、用户体验、视觉效果，到前后端开发、编程框架，我们相信『激情』、『创造力』与『坚持』是我们持续取得成功的关键。
-                </p>
-                <p class="buttons">
-                    <a href="#contact" class="button">联系我们</a>
-                    <a href="#case" class="button">查看案例</a>
-                </p>
-            </div>
-            <div id="arrow" class="arrow">
-                <img src="{$_G['siteurl']}template/default/res/images/arrow-down.png" class="img-responsive" />
+            <div class="navbar-lines">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
             </div>
         </div>
+        <div class="masthead container">
+            <!--{if CURSCRIPT=="project"}-->
+            <p class="title">
+                项目管理系统<span id="geekzoo" class="highlight">您的伙伴</span>
+            </p>
+            <p class="subtitle" id="brief">
+                项目过程中需要协调很多人和很多事，手忙脚乱？<br />
+                任务有分配忘Check？<br />
+                想找个助理协助进行项目协调？<br />
+                项目任务就是你的秘书。
+            </p>
+            <p class="buttons">
+                <a href="#contact" class="button">联系我们</a>
+            </p>
+            <!--{else}-->
+            <p class="title">
+                我们不是机构，我们是 <span id="geekzoo" class="highlight">您的伙伴</span>
+            </p>
+            <p class="subtitle" id="brief">
+                江西永新科技有限责任公司创始于2017年。至今，我们已经参与完成近百个网站端与移动端专案。我们为客户提供完整的解决方案，包括从视觉识别、用户界面、信息架构、逻辑流程、用户体验、视觉效果，到前后端开发、编程框架，我们相信『激情』、『创造力』与『坚持』是我们持续取得成功的关键。
+            </p>
+            <p class="buttons">
+                <a href="#contact" class="button">联系我们</a>
+                <a href="#case" class="button">查看案例</a>
+            </p>
+            <!--{/if}-->
+        </div>
+        <div id="arrow" class="arrow">
+            <img src="{$_G['siteurl']}template/default/res/images/arrow-down.png" class="img-responsive" />
+        </div>
+    </div>
